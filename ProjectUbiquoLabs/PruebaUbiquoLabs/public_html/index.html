@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arreglos UbiquoLabs - SuperhéroesL</title>
+</head>
+<body>
+
+    <h1>Resultados de héroes</h1>
+    <hr>
+    
+    <h2>Héroes buenos:</h2>
+    <div id="good-heroes"></div>
+    
+    <hr>
+    <h2>Todos los nombres:</h2>
+    <div id="hero-names"></div>
+
+    <hr>
+    <h2>Nombres de héroes buenos:</h2>
+    <div id="good-hero-names"></div>
+    <hr>
+    <script>
+        let heroes = [
+            { hero_name: "Abe Sapien", gender: "Male", alignment: "good"},
+            { hero_name: "Abin Sur", gender: "Male", alignment: "good"},
+            { hero_name: "Abomination", gender: "Male", alignment: "bad"},
+            { hero_name: "Abraxas", gender: "Male", alignment: "bad"},
+            { hero_name: "Absorbing Man", gender: "Male", alignment: "bad"}
+        ];
+
+        function getGoodHeroes(heroes) {
+            return heroes.filter(hero => hero.alignment === "good");
+        }
+
+        function getHeroNames(heroes) {
+            return heroes.map(hero => hero.hero_name);
+        }
+
+        function getGoodHeroNames(heroes) {
+            return heroes
+                .filter(hero => hero.alignment === "good")
+                .map(hero => hero.hero_name);
+        }
+
+        function displayResults() {
+            let goodHeroes = getGoodHeroes(heroes);
+            let heroNames = getHeroNames(heroes);
+            let goodHeroNames = getGoodHeroNames(heroes);
+
+            document.getElementById('good-heroes').innerHTML = JSON.stringify(goodHeroes, null, 2);
+            document.getElementById('hero-names').innerHTML = heroNames.join(', ');
+            document.getElementById('good-hero-names').innerHTML = goodHeroNames.join(', ');
+        }
+
+        displayResults();
+    </script>
+</body>
+</html>
